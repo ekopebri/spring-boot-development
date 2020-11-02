@@ -1,0 +1,30 @@
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+server:
+    port: 1020
+spring:
+    cache:
+        type: redis
+        redis: 
+            cache-null-value: true
+            time-to-live: 60000
+    datasource:
+        url: jdbc:postgresql://localhost:5432/springredis
+        username: postgres
+        password: password
+    jpa:
+        hibernate:                
+            ddl-auto: update
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        properties:
+            hibernate:    
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+                format_sql: true
+                jdbc:
+                    lob:
+                        non_contextual_creation: true
+        show-sql: true
